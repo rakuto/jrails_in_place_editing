@@ -1,0 +1,18 @@
+JrailsInPlaceEditing
+====================
+
+Edit in place for jRails.
+
+
+Example
+=======
+
+Example goes here.
+
+Dual Licenses
+================
+This plugin uses implementaion of in-place editor for jQuery, created by Dave Hauenstein.
+Another In-Place Editor, jQuery Plugin <http://davehauenstein.com/blog/archives/28>
+Thank you.
+
+Copyright (c) 2008 Rakuto Furutani, released under the MIT license
