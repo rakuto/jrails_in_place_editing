@@ -3,11 +3,17 @@ JrailsInPlaceEditing
 
 Edit in place for jRails.
 
-
 Example
 =======
-
-Example goes here.
+  # Controller
+    class BlogController < ApplicationController
+      in_place_edit_for :post, :title
+    end
+  
+  # View
+  <%= in_place_editor_field :post, 'title' %>
+ 
+For more details, see comments in jrails_in_place_macros.rb.
 
 Dual Licenses
 ================
