@@ -1,3 +1,5 @@
+require 'in_plce_macros_helper'
+
 module InPlaceEditing
   def self.included(base)
     base.extend(ClassMethods)
