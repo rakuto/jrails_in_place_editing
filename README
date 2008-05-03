@@ -15,7 +15,7 @@ Example
     # set_#{object}_#{title}
     def set_post_title
       post = Post.find(params[:id]) 
-      post.title = params[:title]
+      post.title = params[:value] # Name of parameter is always 'value'.
       post.save
 
       # It should render a text 
