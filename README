@@ -9,16 +9,33 @@ Example
     class BlogController < ApplicationController
       in_place_edit_for :post, :title
     end
+
+  # Customize the action that update the value
+  class BlogController < ApplicationController
+    # set_#{object}_#{title}
+    def set_post_title
+      post = Post.find(params[:id]) 
+      post.title = params[:title]
+      post.save
+
+      # It should render a text 
+      render :text => post.title
+    end
+  end
   
   # View
-  <%= in_place_editor_field :post, 'title' %>
+  <%= in_place_editor_field :post, :title %>
+
+  # Pass some options
+  <%= in_place_editor_field :post, :title, {}, {:field_type => 'textarea', :textarea_cols => 25, :textarea_rows => 10}%>
+  <%= in_place_editor_field :post, :title, {}, {:field_type => 'textarea', :textarea_rows => 10}%>
  
 For more details, see comments in jrails_in_place_macros.rb.
 
 Dual Licenses
 ================
-This plugin uses implementaion of in-place editor for jQuery, created by Dave Hauenstein.
-Another In-Place Editor, jQuery Plugin <http://davehauenstein.com/blog/archives/28>
+This plugin uses implementaion of in-place editor for jQuery, created by Rakuto Furutani
+Implementation of in-place editor for jQuery that created by David Hauenstein is used.
 Thank you.
 
 Copyright (c) 2008 Rakuto Furutani, released under the MIT license

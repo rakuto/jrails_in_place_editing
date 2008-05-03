@@ -37,15 +37,15 @@ module InPlaceMacrosHelper
     function = "$('##{field_id}').editInPlace("
 
     js_options = {}
-    js_options['url'] = "'" + options[:url] + "'"
+    js_options['url'] = "'" + (options[:url] || '') + "'"
     if respond_to?(:protect_against_forgery?) && protect_against_forgery?
       js_options['params'] = "'#{request_forgery_protection_token}=' + encodeURIComponent('#{escape_javascript form_authenticity_token}')"
     end
-    js_options['filed_type'] = "'" + options[:field_type] + "'" if options[:field_type]
+    js_options['field_type'] = "'" + options[:field_type] + "'" if options[:field_type]
     js_options['select_options'] = "'" + (options[:select_options].is_a?(Array)?
       options[:select_options].join(',') : options[:select_options]) + "'" if js_options[:options].to_s == 'select'
-    js_options['textarea_cols'] = options[:textarea_cols].to_i if options[:field_type].to_s == 'textarea'
-    js_options['textarea_rows'] = options[:textarea_rows].to_i if options[:textarea_rows].to_s == 'textarea'
+    js_options['textarea_cols'] = (options[:textarea_cols] || 25).to_i if options[:field_type].to_s == 'textarea'
+    js_options['textarea_rows'] = (options[:textarea_rows] || 10).to_i if options[:field_type].to_s == 'textarea'
     js_options['bg_over'] = "'" + options[:bg_over] + "'" if options[:bg_over]
     js_options['bg_out'] = "'" + options[:bg_out] + "'" if options[:bg_out]
     js_options['saving_text'] = "'" + options[:saving_text] + "'" if options[:saving_text] 
