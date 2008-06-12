@@ -78,9 +78,10 @@ module InPlaceMacrosHelper
       base_id = tag.object.id
       tag_options[:id] = "#{object}_#{method}_#{base_id}_in_place_editor"
       field_html = tag.to_content_tag(tag_options.delete(:tag), tag_options)
-    end
+    end   
     in_place_editor_options[:url] = in_place_editor_options[:url] || 
-      url_for({ :action => "set_#{object}_#{method}", :id => base_id})
+                                    url_for({ :action => "set_#{object.kind_of?(ActiveRecord::Base) ? 
+                                      object.class.name.underscore : object}_#{method}", :id => base_id})
     field_html + in_place_editor(tag_options[:id], in_place_editor_options)
   end
 end
